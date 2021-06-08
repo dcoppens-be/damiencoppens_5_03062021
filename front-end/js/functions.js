@@ -1,5 +1,12 @@
 const url="http://localhost:3000/api/teddies";
 
+if(typeof topProducts == 'object'){
+    let topProducts={};
+}
+else{
+    let topProducts={};
+}
+
 /* Fonction de création d'élément HTLM */
 /* Paramètres: 
                 - [STRING] nom de l'élément à créer. Exemple: ...

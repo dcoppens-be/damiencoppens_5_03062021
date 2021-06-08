@@ -1,3 +1,8 @@
+let currentUnitPrice=0;
+let currentQuantity=1;
+
+console.log(topProducts);
+
 function getProductIdFromUrl(){
     const iid=window.location.search.toString();
     /* CAS iid == null */
@@ -30,7 +35,44 @@ document.getElementById("quantityChoice").addEventListener('change', (event) =>{
         document.getElementById("quantityChoice").value=0;
     } 
     else{
+        currentQuantity=event.target.value;
         localStorage.setItem('currentProductQuantity',event.target.value);
         console.log(localStorage.getItem('currentProductQuantity'));
+        document.getElementById('totalPrice').textContent=displayPrice(currentUnitPrice*currentQuantity)+' \u20AC';
     }
 });
+
+/* Fonction de réaction à l'événement CLICK du bouton d'ajout au panier */
+/* Réaction: 
+            - conservation de la valeur affichée à 0 si l'utilisateur essaye d'insérer une valeur négative
+            - mise à jour de la quantité d'articles dans le localStorage 
+            - affichage de la nouvelle quantité pour le badge associé au panier dans le menu navigation */
+
+
+fetch(url+'/'+id,{method:'GET'})
+    .then(function(response){
+        if(response.ok){
+            return response.json();
+            }
+        })
+        .then(function(value){
+            console.log(value);
+
+            currentUnitPrice=value.price;
+
+            document.title="L'ours " + value.name + " par Orinoco";
+            /* document.getElementById("main").removeChild(document.querySelector("h1")); */
+            document.getElementById("enImage").appendChild(addElement('img',{src: value.imageUrl,class:'img-fluid img-thumbnail'}));
+    
+                for (let i in value.colors){
+                    let option = document.getElementById("colorChoice").appendChild(addElement('option',{value:value.colors[i]}));
+                    option.textContent=value.colors[i];
+                }
+    
+                document.getElementById('price').textContent=displayPrice(value.price)+' \u20AC';
+                document.getElementById('totalPrice').textContent=displayPrice(value.price*document.getElementById("quantityChoice").value)+' \u20AC';
+                
+            })
+            .catch(function(error){
+                alert("Problème de récupération des données");
+            })
