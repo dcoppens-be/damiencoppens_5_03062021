@@ -1,3 +1,11 @@
+let controlPanel=[];
+
+localStorage.clear();
+console.log("panel   " + localStorage.getItem('panel'));
+
+localStorage.setItem('damien',"Je m'appelle Damien");
+console.log(localStorage.getItem('damien'));
+
 /* Fonction de création d'une carte produit */
 /* Paramètres: 
                 - [NODE] noeud du parent où la carte doit être ajoutée
@@ -40,11 +48,74 @@ async function getFromAPI(url) {
 
             let donnees = value;
             console.log(donnees.length);
+
+            /* let controlPanel=[]; */
             for(let i in donnees){
-                topProducts[donnees[i].name]=donnees[i]._id;
-                newCard(document.getElementById('products'),donnees[i].name,donnees[i].imageUrl,donnees[i].description,donnees[i]._id, "pages/product.html"+"?"+donnees[i]._id )
-                console.log(topProducts);  
+                /*topProducts[donnees[i].name]=donnees[i]._id;*/
+                
+
+                newCard(document.getElementById('products'),donnees[i].name,donnees[i].imageUrl,donnees[i].description,donnees[i]._id, "pages/product.html"+"?"+donnees[i]._id );
+                controlPanel[i]={_id:donnees[i]._id, name:donnees[i].name};
+
+                /*
+                if (localStorage.getItem('panel')){
+                    console.log('Debut IF');
+
+                    controlPanel[i]={_id:donnees[i]._id, name:donnees[i].name};
+                    console.log("controlPanel" + controlPanel)
+                    console.log("Length of controlPanel" + controlPanel.length)
+                    localStorage.setItem('panel',JSON.stringify(controlPanel));
+
+                    console.log(localStorage.getItem('panel'));
+                    console.log(JSON.parse(localStorage.getItem('panel')));
+                    console.log('Ici, commence les choses sérieuses')
+                    let tes=JSON.parse(localStorage.getItem('panel')).push({_id:donnees[i]._id, name:donnees[i].name});
+                    console.log(tes);
+                    let test=[JSON.parse(localStorage.getItem('panel'))[0], JSON.parse(localStorage.getItem('panel'))[1],{_id:donnees[i]._id, name:donnees[i].name} ]
+                    console.log(test);
+
+                    localStorage.setItem('panel0',JSON.stringify(test));
+                }
+                else{
+                    controlPanel[i]={_id:donnees[i]._id, name:donnees[i].name};
+                    console.log("controlPanel" + i);
+                    localStorage.setItem('panel',JSON.stringify(controlPanel));
+   
+
+                    console.log('Debut ELSE');
+                    console.log(donnees[i]._id);
+                    console.log(JSON.stringify(donnees[i]._id));
+                    
+                    localStorage.setItem('pan',JSON.stringify({_id : donnees[i]._id}));
+                    console.log(localStorage.getItem('pan'));
+                    console.log(JSON.parse(localStorage.getItem('pan')));
+                    console.log(JSON.parse(localStorage.getItem('pan'))._id);
+
+                    localStorage.setItem('el',JSON.stringify({name : donnees[i].name}));
+                    console.log(localStorage.getItem('el'));
+                    console.log(JSON.parse(localStorage.getItem('el')));
+                    console.log(JSON.parse(localStorage.getItem('el')).name);
+                    
+                    localStorage.setItem('panel0',JSON.stringify([{_id:donnees[i]._id, name:donnees[i].name},{_id:donnees[i]._id, name:donnees[i].name}]));
+                }
+                console.log(localStorage.getItem('panel'));
+                console.log(localStorage.getItem('panel')[0]);
+                console.log(localStorage.getItem('panel')[1]);
+                console.log(JSON.parse(localStorage.getItem('panel')));
+                console.log(JSON.parse(localStorage.getItem('panel'))[0]);
+                console.log(JSON.parse(localStorage.getItem('panel'))[0]._id);
+                console.log(JSON.parse(localStorage.getItem('panel'))[0].name);
+                console.log(JSON.parse(localStorage.getItem('panel'))[1]);
+
+                */
+
             }
+            localStorage.setItem('panel',JSON.stringify(controlPanel));
+            console.log("panel   " + localStorage.getItem('panel'));
+            console.log(JSON.parse(localStorage.getItem('panel')));
+            localStorage.colorSetting = '#a4509b';
+            console.log("localStorage   " + localStorage.colorSetting);
+
         })
         .catch(function(error){
             alert("Problème de récupération des données");
@@ -84,3 +155,4 @@ async function getFromAPI(url) {
 }
 
 getFromAPI(url);
+console.log("panel   " + localStorage.getItem('panel'));

@@ -1,7 +1,7 @@
+
+
 let currentUnitPrice=0;
 let currentQuantity=1;
-
-console.log(topProducts);
 
 function getProductIdFromUrl(){
     const iid=window.location.search.toString();
@@ -16,6 +16,18 @@ function getProductIdFromUrl(){
 
 const id = getProductIdFromUrl();
 
+console.log(localStorage.getItem('damien'));
+
+let panelNode = document.getElementById('panel');
+console.log("panel   " + localStorage.getItem('panel'));
+console.log(JSON.parse(localStorage.getItem('panel')));
+console.log("localStorage   " + localStorage.colorSetting);
+for (var i in JSON.parse(localStorage.getItem('panel')))
+{    
+    let oneTeddy=JSON.parse(localStorage.getItem('panel'))[i];
+    let lien = panelNode.appendChild(addElement('a', { class: 'list-group-item list-group-item-action', href: "pages/product.html"+"?"+oneTeddy._id }));
+    lien.textContent = oneTeddy.name;
+}
 
 /* Fonction de réaction à l'événement modificiaction du choix de couleur par l'utilisateur */
 /* Réaction: changement de l'item COLOR dans le localStorage*/
