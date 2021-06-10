@@ -34,9 +34,6 @@ function newCard(node, name, imageUrl, description, id, link) {
 }
 
 
-
-async function getFromAPI(url) {
-    try{
         fetch(url)
         .then(function(response){
             if(response.ok){
@@ -53,8 +50,10 @@ async function getFromAPI(url) {
             for(let i in donnees){
                 /*topProducts[donnees[i].name]=donnees[i]._id;*/
                 
-
+                /*
                 newCard(document.getElementById('products'),donnees[i].name,donnees[i].imageUrl,donnees[i].description,donnees[i]._id, "pages/product.html"+"?"+donnees[i]._id );
+                */
+                newCard(document.getElementById('products'),donnees[i].name,donnees[i].imageUrl,donnees[i].description,donnees[i]._id, "product.html"+"?"+donnees[i]._id );
                 controlPanel[i]={_id:donnees[i]._id, name:donnees[i].name};
 
                 /*
@@ -121,38 +120,4 @@ async function getFromAPI(url) {
             alert("Problème de récupération des données");
         })
 
-        /*newCard(document.getElementById('products'),'Produit 6','images/logo.jpg','L ourson F','AZERTY','pages/product.html' );
-
-        fetch(url)
-        .then(function(response){
-            if(response.ok){
-                return response.json();    
-            }
-        })
-        .then(function(value){
-            let donnees = value;
-            console.log(donnees.length);
-            for(let i in donnees){
-                let contenu = document.createElement('li');
-                contenu.setAttribute('id',donnees[i]._id);
-                let image = document.createElement('img');
-                image.setAttribute('src',donnees[i].imageUrl);
-                let lien = document.createElement('a');
-                /*lien.setAttribute('href',"pages/product.html?".concat(donnees[i]._id));
-                lien.setAttribute('href',"pages/product.html"+"?"+donnees[i]._id);
-                document.getElementById('liste').appendChild(contenu);
-                document.getElementById(donnees[i]._id).appendChild(lien).appendChild(image);
-
-                /*newCard(document.getElementById('products'),donnees[i].name,donnees[i].imageUrl,donnees[i].description, "pages/product.html"+"?"+donnees[i]._id )
-                }
-        })*/
-        
-
-    }
-    catch(error){
-        console.log("Erreur de communication avec l'API",error);
-    }
-}
-
-getFromAPI(url);
 console.log("panel   " + localStorage.getItem('panel'));
