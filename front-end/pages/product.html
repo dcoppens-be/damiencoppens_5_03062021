@@ -31,7 +31,8 @@
             <nav class="navbar navbar-dark bg-dark">
                 <!-- <a class="navbar-brand" href="../index.html">Orinoco</a> -->
                 <a class="navbar-brand" href="index.html">Orinoco</a>
-                <a class="nav-link" href="../pages/cart.html"><i class="fas fa-shopping-cart"></i></a>
+                <a id="nav-cart" class="nav-link" href="../pages/cart.html"><i class="fas fa-shopping-cart"></i></a>
+                <button id="cross" type="button" class="btn btn-primary">X</button>
             </nav>
 
         </header>
@@ -41,33 +42,36 @@
             <main class="col-lg-10">
                 <div class="row">
                     <div class="col">
-                        <figure id="enImage" class="figure">
+                        <figure id="figure-image" class="figure">
 
                         </figure>
+                        <figcaption id="figure-description" class="figure-caption"></figcaption>
                     </div>
                     <div class="col-auto">
                         <h1>Détails du produit</h1>
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <div class="row">
-                                    <p class="col-4 text-wrap">Nom</p>
-                                    <p class="col-8 text-wrap"></p>
+                                    <p class="col-4 text-wrap">Nom :</p>
+                                    <p id="name" class="col-8 text-wrap"></p>
                                 </div>
                             </li>
+                            <!--
                             <li class="list-group-item">
                                 <div class="row">
                                     <p class="col-4 text-wrap">Description</p>
-                                    <p class="col-8 text-wrap"></p>
+                                    <p id="description" class="col-8 text-wrap"></p>
                                 </div>
                             </li>
+                            -->
                             <li class="list-group-item">
                                 <div class="row">
-                                    <p class="col-4 text-wrap">Prix unitaire</p>
+                                    <p class="col-4 text-wrap">Prix unitaire:</p>
                                     <p id="price" class="col-8 text-wrap"></p>
                                 </div>
                             </li>
                             <li class="list-group-item">
-                                <form>
+                                <form id="productForm">
                                     <fieldset class="form-group row">
                                         <label class="col-auto col-form-label" for="colorChoice">Couleur :</label>
                                         <div class="col">
@@ -90,11 +94,16 @@
                             </li>
                             <li class="list-group-item">
                                 <div class="row">
-                                    <p class="col-4 text-wrap">Prix pour la quantité choisie</p>
+                                    <p class="col-4 text-wrap">Prix pour la quantité choisie :</p>
                                     <p id="totalPrice" class="col-8 text-wrap"></p>
                                 </div>
                             </li>
-                            <li class="list-group-item">Référence</li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <p class="col-4 text-wrap">Référence :</p>
+                                    <p id="_id" class="col-8 text-wrap"></p>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                     

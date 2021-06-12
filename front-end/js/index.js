@@ -1,10 +1,13 @@
 let controlPanel=[];
 
-localStorage.clear();
+/*localStorage.clear();*/
+
 console.log("panel   " + localStorage.getItem('panel'));
 
+/*
 localStorage.setItem('damien',"Je m'appelle Damien");
 console.log(localStorage.getItem('damien'));
+*/
 
 /* Fonction de création d'une carte produit */
 /* Paramètres: 
@@ -40,11 +43,12 @@ function newCard(node, name, imageUrl, description, id, link) {
                 return response.json();
             }
         })
-        .then(function(value){
-            console.log(value);
-
-            let donnees = value;
+        .then(function(donnees){
+            
+            /*
+            console.log(donnees);
             console.log(donnees.length);
+            */
 
             /* let controlPanel=[]; */
             for(let i in donnees){
