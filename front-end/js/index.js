@@ -116,8 +116,10 @@ function newCard(node, name, imageUrl, description, id, link) {
             localStorage.setItem('panel',JSON.stringify(controlPanel));
             console.log("panel   " + localStorage.getItem('panel'));
             console.log(JSON.parse(localStorage.getItem('panel')));
+            /*
             localStorage.colorSetting = '#a4509b';
             console.log("localStorage   " + localStorage.colorSetting);
+            */
 
         })
         .catch(function(error){

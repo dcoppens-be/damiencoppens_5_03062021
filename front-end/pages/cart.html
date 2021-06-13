@@ -26,56 +26,120 @@
 
     <div class="container">
 
-        <form class="needs-validation" novalidate>
-        
-            <fieldset class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="firstName">Prénom :</label>
-                </div>
-                <input type="text" class="form-control" placeholder="..." id="firstName" required> <!-- autofocus -->
-                <div class="valid-feedback"><i class="fas fa-check"></i> <i class="fas fa-check-square"></i> <i
-                        class="far fa-check-square"></i> <i class="fas fa-check-circle"></i> <i class="far fa-check-circle"></i>
-                </div>
-                <div class="invalid-feedback"></div>
-            </fieldset>
-        
-            <fieldset class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="lastName">Nom :</label>
-                </div>
-                <input type="text" class="form-control" placeholder="..." id="lasttName" required>
-                <div class="valid-feedback"></div>
-                <div class="invalid-feedback"></div>
-            </fieldset>
+        <header>
 
-            <fieldset class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="address">Adresse :</label>
-                </div>
-                <input type="text" class="form-control" placeholder="..." id="address" required>
-                <div class="valid-feedback"></div>
-                <div class="invalid-feedback"></div>
-            </fieldset>
+            <nav class="navbar navbar-dark bg-dark">
+                <!-- <a class="navbar-brand" href="../index.html">Orinoco</a> -->
+                <a class="navbar-brand" href="index.html">Orinoco</a>
+                <a id="nav-cart" class="d-none nav-link" href="../pages/cart.html"><i class="fas fa-shopping-cart"></i></a>
+                <button id="cross" type="button" class="d-none btn btn-primary">X</button>
+            </nav>
 
-            <fieldset class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="city">Ville :</label>
-                </div>
-                <input type="text" class="form-control" placeholder="..." id="city" required>
-                <div class="valid-feedback"></div>
-                <div class="invalid-feedback"></div>
-            </fieldset>
+        </header>
 
-            <fieldset class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="email">Email :</label>
-                </div>
-                <input type="email" class="form-control" placeholder="..." id="email" required>
-                <div class="valid-feedback"></div>
-                <div class="invalid-feedback"></div>
-            </fieldset>
+        <main>
+            <h1> Votre Panier </h1>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th class="d-none d-md-block">Nom</th>
+                        <th>Image</th>
+                        <th>Couleur</th>
+                        <th class="d-none d-md-block">Prix unitaire</th>
+                        <th>Quantité</th>
+                        <th class="d-none d-sm-block">Prix</th>
+                    </tr>
+                </thead>
+                <tbody id="productsList">
+                    
+                </tbody>
+            </table>
         
-        </form>
+            <!--
+            <div class="thumbnail">
+                <div class="row">
+                    <div class="col-3"> Image </div>
+                    <div class="col-2"> Nom du produit 
+                        <ul class="list-group">
+                            <li class="list-group-item">
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-2"> Couleur 
+                        <ul class="list-group">
+                        </ul>
+                    </div>
+                    <div class="col-1"> Quantité 
+                        <ul class="list-group">
+                        </ul>
+                    </div>
+                    <div class="col-2"> Prix 
+                        <ul class="list-group">
+                        </ul>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-outline-primary"> + </button>
+                        <button> - </button>
+                    </div>
+                </div>
+            </div>
+            -->
+        
+            <h2> Vos données pour la commande </h2>
+            <form class="needs-validation" novalidate>
+        
+                <fieldset class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="firstName">Prénom :</label>
+                    </div>
+                    <input type="text" class="form-control" placeholder="..." id="firstName" required> <!-- autofocus -->
+                    <div class="valid-feedback"><i class="fas fa-check"></i> <i class="fas fa-check-square"></i> <i
+                            class="far fa-check-square"></i> <i class="fas fa-check-circle"></i> <i
+                            class="far fa-check-circle"></i>
+                    </div>
+                    <div class="invalid-feedback"></div>
+                </fieldset>
+        
+                <fieldset class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="lastName">Nom :</label>
+                    </div>
+                    <input type="text" class="form-control" placeholder="..." id="lasttName" required>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback"></div>
+                </fieldset>
+        
+                <fieldset class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="address">Adresse :</label>
+                    </div>
+                    <input type="text" class="form-control" placeholder="..." id="address" required>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback"></div>
+                </fieldset>
+        
+                <fieldset class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="city">Ville :</label>
+                    </div>
+                    <input type="text" class="form-control" placeholder="..." id="city" required>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback"></div>
+                </fieldset>
+        
+                <fieldset class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="email">Email :</label>
+                    </div>
+                    <input type="email" class="form-control" placeholder="..." id="email" required>
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback"></div>
+                </fieldset>
+        
+            </form>
+        
+        </main>
 
     </div>
     

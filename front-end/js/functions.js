@@ -16,7 +16,7 @@ function addElement(tagName,attributes){
     return element;
 }
 
-/* Fonction servant à afficher le nombre d'articles dans le panie */
+/* Fonction servant à afficher le nombre d'articles dans le panier */
 
 function displayNumberOfArticles(){
 /*
@@ -52,12 +52,14 @@ function displayPrice(priceInCents){
 function emptyCart(){
     console.log('Vidons le panier');
     localStorage.removeItem('numberOfArticles');
+    localStorage.removeItem('cart');
     displayNumberOfArticles();
 }
 
 document.getElementById('cross').addEventListener('click',function(){
     console.log('Vidons le panier');
     localStorage.removeItem('numberOfArticles');
+    localStorage.removeItem('cart');
     displayNumberOfArticles();
 });
 

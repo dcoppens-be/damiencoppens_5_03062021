@@ -1,5 +1,5 @@
 /* VARIABLES */
-let product = {_id:"default",name:"default",price:0,color:"default",quantity:0};
+let product = {_id:"default",name:"default",price:0,color:"default",quantity:1};
 
 let currentUnitPrice=0;
 let currentQuantity=1;
@@ -122,13 +122,41 @@ document.getElementById("addToCart").addEventListener('click', function (e) {
     }
     
     if (localStorage.getItem('cart')) {
+        console.log('Nouveau produit ajouté au panier')
+        console.log(product);
+        let productsTable = JSON.parse(localStorage.getItem('cart'));
+        let cartCheck=0;
+        for (var i in productsTable)
+        { 
+            if(productsTable[i].name == product.name && productsTable[i].color == product.color)
+            {
+                cartCheck=1;
+                console.log('Ce produit existe déjà dans le panier');
+                console.log(typeof JSON.parse(localStorage.getItem('cart'))[i].quantity);
+                console.log(typeof product.quantity);
+                productsTable[i].quantity += product.quantity;
+                localStorage.setItem('cart', JSON.stringify(productsTable));
+            }
+        }
+        if (cartCheck==0){
+            
+                productsTable[productsTable.length] = product;
+                localStorage.setItem('cart', JSON.stringify(productsTable));
+                console.log(localStorage.getItem('cart'));
+                console.log(JSON.parse(localStorage.getItem('cart')));
+        }
+        /*
         let newQuantity = localStorage.getItem(id) + localStorage.getItem('currentProductQuantity');
         localStorage.setItem(id, newQuantity);
         console.log(localStorage.getItem(id));
+        */
     }
     else {
+        console.log('Premier produit ajouté au panier')
         console.log(product);
-        localStorage.setItem('cart', localStorage.getItem('currentProductQuantity'));
+        localStorage.setItem('cart', JSON.stringify([product]));
+        console.log(localStorage.getItem('cart'));
+        console.log(JSON.parse(localStorage.getItem('cart')));
     }
 
     }
