@@ -203,6 +203,7 @@ fetch(url+'/'+id,{method:'GET'})
                 alert("Problème de récupération des données");
             });
 
+/*
 let testPanel=[];
 
 fetch(url)
@@ -215,10 +216,7 @@ fetch(url)
 
             let donnees = value;
 
-            /* let controlPanel=[]; */
-            for(let i in donnees){
-                /*topProducts[donnees[i].name]=donnees[i]._id;*/
-                
+            for(let i in donnees){    
                 testPanel[i]={_id:donnees[i]._id, name:donnees[i].name};
             }
             localStorage.setItem('testPanel',JSON.stringify(testPanel));
@@ -229,5 +227,6 @@ fetch(url)
         .catch(function(error){
             alert("Problème de récupération des données");
         })
+*/
 
 console.log("testPanel   " + localStorage.getItem('testPanel'));
