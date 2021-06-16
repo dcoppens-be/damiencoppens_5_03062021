@@ -53,7 +53,7 @@ document.getElementById("colorChoice").addEventListener('change', (event) =>{
     console.log(product);
 });
 
-/* Fonction de réaction à l'événement modificiaction de la quatité par l'utilisateur */
+/* Fonction de réaction à l'événement modificiaction de la quantité par l'utilisateur */
 /* Réaction: 
             - conservation de la valeur affichée à 0 si l'utilisateur essaye d'insérer une valeur négative
             - changement de l'item currentProductQuantity dans le localStorage */
