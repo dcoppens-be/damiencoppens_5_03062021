@@ -58,7 +58,7 @@ function newCard(node, name, imageUrl, description, id, link) {
                 newCard(document.getElementById('products'),donnees[i].name,donnees[i].imageUrl,donnees[i].description,donnees[i]._id, "pages/product.html"+"?"+donnees[i]._id );
                 */
                 newCard(document.getElementById('products'),donnees[i].name,donnees[i].imageUrl,donnees[i].description,donnees[i]._id, "product.html"+"?"+donnees[i]._id );
-                controlPanel[i]={_id:donnees[i]._id, name:donnees[i].name};
+                controlPanel[i]={_id:donnees[i]._id, name:donnees[i].name}; /*, imageUrl:donnees[i].imageUrl*/
 
                 /*
                 if (localStorage.getItem('panel')){

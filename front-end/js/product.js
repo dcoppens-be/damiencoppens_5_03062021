@@ -1,5 +1,5 @@
 /* VARIABLES */
-let product = {_id:"default",name:"default",price:0,color:"default",quantity:1};
+let product = {_id:"default",name:"default",price:0,color:"default",quantity:1, imageUrl:"default"};
 
 let currentUnitPrice=0;
 let currentQuantity=1;
@@ -177,6 +177,7 @@ fetch(url+'/'+id,{method:'GET'})
             product["_id"]= value._id;
             product["name"]= value.name;
             product["price"]= value.price;
+            product["imageUrl"]=value.imageUrl;
 
             document.title="L'ours " + value.name + " par Orinoco";
             /* document.getElementById("main").removeChild(document.querySelector("h1")); */

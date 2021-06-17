@@ -1,6 +1,7 @@
 let contact={firstName:'.',lastName:'.',address:'..',city:'.',email:'a1.2-3_4@bc.de'};
 let products=[];
 let totalPrice=0;
+let colorsCheck={};
 
 /*
 console.log("JF   " + localStorage.jf);
@@ -21,6 +22,45 @@ for (var i in JSON.parse(localStorage.getItem('cart')))
     + "<td class=\"d-none d-sm-block\">" + displayPrice(oneTeddy.price*oneTeddy.quantity) + "</td>"
     + "</tr>";
 
+    let coloring;
+
+    switch (oneTeddy.color){
+    case 'Dark brown':
+        coloring="Saddlebrown";
+    break;
+    case 'Pale brown':
+        coloring="Burlywood";
+    break;
+
+    default:
+            coloring=oneTeddy.color;
+    }
+
+    if (oneTeddy.name in colorsCheck){
+        
+        colorsCheck[oneTeddy.name].push(oneTeddy.color);
+
+        
+        
+
+        document.getElementById('figcaption-'+oneTeddy.name).innerHTML += "<span class=\"badge border\" style=\"background-color:"+coloring+";\"> </span>";
+    
+    }
+    else {
+
+        document.getElementById('productsPicture').innerHTML +=
+            "<div class=\"col-4\"> <figure>"
+            + "<img src=\"" + oneTeddy.imageUrl + "\" class=\"img-fluid img-thumbnail figure-img\""
+            + "</figure> <figcaption id=\"figcaption-" + oneTeddy.name + "\">" + oneTeddy.name + " <span class=\"badge border\" style=\"background-color:" + coloring + ";\"> </span></figcaption> </div>";
+
+
+        colorsCheck[oneTeddy.name] = ["<span class=\"badge\" style=\"background-color:" + oneTeddy.color + ";\"> </span>"];
+
+    }
+
+    console.log(colorsCheck);
+
+    
     totalPrice+=oneTeddy.price*oneTeddy.quantity;
     /*
     let lien = panelNode.appendChild(addElement('a', { class: 'list-group-item list-group-item-action', href: "product.html"+"?"+oneTeddy._id }));
@@ -79,12 +119,16 @@ document.getElementById("email").addEventListener('input', (event) =>{
                 if (mask.test(event.target.value))
                 {
                     console.log("Eh oh");
+                    document.getElementById("email").classList.remove("is-invalid");
+                    document.getElementById("email").classList.add("is-valid");
                     document.getElementById("email").classList.remove("bg-warning");
-                    document.getElementById("email").classList.add("bg-success");
+                    /*document.getElementById("email").classList.add("bg-success");*/
                 }
                 else
                 {
                     console.log(event.target.value);
+                    document.getElementById("email").classList.remove("is-valid");
+                    document.getElementById("email").classList.add("is-invalid");
                     document.getElementById("email").classList.remove("bg-success");
                     document.getElementById("email").classList.add("bg-warning");
                 }
@@ -101,7 +145,15 @@ document.getElementById("email").addEventListener('input', (event) =>{
             document.getElementById("order").addEventListener('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
+
+                if (document.getElementById("cartForm").checkValidity())
+                {
+                    console.log("Les entrées du formulaires sont correctes et peuvent être traitées");
+                }
+                else {
+                    console.log("Formulaire invalide");
+                }
             
-                
+                document.getElementById("cartForm").classList.add("was-validated");
             
             });
